@@ -5,7 +5,7 @@ export default tseslint.config(
   {
     ignores: ['lib/graphql/generated/**', '.next/**'],
   },
-  ...tseslint.configs.recommended,
+  tseslint.configs.recommended,
   {
     plugins: {
       '@next/next': pluginNext,
