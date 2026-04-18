@@ -3,7 +3,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['lib/graphql/generated/**', '.next/**'],
+    ignores: ['src/lib/graphql/generated/**', '.next/**'],
   },
   tseslint.configs.recommended,
   {

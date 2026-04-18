@@ -6,7 +6,7 @@
 
 **映画情報詳細ページ**では、映画のタイトルと説明とlike数を表示し、右サイドバーで「コメント一覧」を表示してください。
 
-以下のGraphQL Queryを使ってください（Queryの定義はすでに `lib/graphql/query` 以下に入っています）。
+以下のGraphQL Queryを使ってください（Queryの定義はすでに `src/lib/graphql/query` 以下に入っています）。
 
 詳細や他のQueryを知りたい場合は [https://develop.api.samansa.com/graphiql](https://develop.api.samansa.com/graphiql) を確認してください。
 
@@ -37,7 +37,7 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 

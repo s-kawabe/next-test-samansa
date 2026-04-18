@@ -13,7 +13,7 @@ import { NextPage } from 'next';
 const Page: NextPage = () => {
   const { data: homeScreenData } = useQuery(GetHomeScreensDocument);
   const { data: VideoData } = useQuery(GetOriginalVideoDocument, {
-    variables: { id: '1480' },
+    variables: { id: '1211' },
   });
   const { data: videoCommentsData, fetchMore } = useQuery(
     GetVideoCommentsDocument,

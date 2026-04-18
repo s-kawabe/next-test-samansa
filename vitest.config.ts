@@ -14,7 +14,7 @@ export default defineConfig({
       exclude: [
         'node_modules/**',
         '.next/**',
-        'lib/graphql/generated/**',
+        'src/lib/graphql/generated/**',
         '**/*.config.*',
         'vitest.setup.ts',
       ],
@@ -22,7 +22,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, '.'),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
 });
