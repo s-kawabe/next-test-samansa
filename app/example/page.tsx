@@ -5,8 +5,9 @@ import {
   GetHomeScreensDocument,
   GetOriginalVideoDocument,
   GetVideoCommentsDocument,
+  type GetVideoCommentsQuery,
 } from '@/lib/graphql/generated/graphql';
-import { useQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client/react';
 import { NextPage } from 'next';
 
 const Page: NextPage = () => {
@@ -57,7 +58,7 @@ const Page: NextPage = () => {
               variables: {
                 after: videoCommentsData.videoComments.pageInfo?.endCursor,
               },
-              updateQuery: (prev, { fetchMoreResult }) => {
+              updateQuery: (prev: GetVideoCommentsQuery, { fetchMoreResult }: { fetchMoreResult: GetVideoCommentsQuery }) => {
                 return {
                   videoComments: {
                     ...prev.videoComments,
