@@ -1,0 +1,37 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git checkout *)",
+      "Bash(npm show *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(gh pr *)",
+      "Bash(npm install *)",
+      "Bash(npm test *)",
+      "Bash(npx tsc *)",
+      "Bash(node *)",
+      "Bash(git -C /Users/shintarokawabe/ghq/github.com/s-kawabe/next-test-samansa status)",
+      "Bash(git -C /Users/shintarokawabe/ghq/github.com/s-kawabe/next-test-samansa diff --stat)",
+      "Bash(git -C /Users/shintarokawabe/ghq/github.com/s-kawabe/next-test-samansa log --oneline -5)",
+      "Bash(gh *)",
+      "Bash(git commit *)",
+      "Bash(./node_modules/.bin/next --help)",
+      "Bash(./node_modules/.bin/next lint *)",
+      "Bash(./node_modules/.bin/eslint . --ext .ts,.tsx)",
+      "Bash(./node_modules/.bin/eslint --flag unstable_ts_config .)",
+      "Bash(./node_modules/.bin/eslint app *)",
+      "Bash(git -C /Users/shintarokawabe/ghq/github.com/s-kawabe/next-test-samansa show HEAD --name-only)",
+      "Bash(pnpm --version)",
+      "Bash(python3 -c \"import sys,json;p=json.load\\(sys.stdin\\);print\\(p['version'], p.get\\('peerDependencies', {}\\)\\)\")",
+      "Bash(pnpm install *)",
+      "Bash(pnpm lint *)",
+      "WebFetch(domain:zenn.dev)",
+      "Bash(pnpm exec *)",
+      "Bash(pnpm test *)",
+      "Bash(pnpm add *)",
+      "Bash(git revert *)",
+      "Bash(git cherry-pick *)"
+    ]
+  }
+}
