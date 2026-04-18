@@ -1,6 +1,17 @@
-import nextConfig from 'eslint-config-next/core-web-vitals';
+import pluginNext from '@next/eslint-plugin-next';
+import tseslint from 'typescript-eslint';
 
-export default [
-  { ignores: ['lib/graphql/generated/**'] },
-  ...nextConfig,
-];
+export default tseslint.config(
+  {
+    ignores: ['lib/graphql/generated/**', '.next/**'],
+  },
+  ...tseslint.configs.recommended,
+  {
+    plugins: {
+      '@next/next': pluginNext,
+    },
+    rules: {
+      ...pluginNext.configs.recommended.rules,
+    },
+  },
+);
