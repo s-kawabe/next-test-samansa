@@ -10,6 +10,8 @@ query getCategory($id: ID!) {
         seconds
       }
       landscapeThumbnail
+      likeNum
+      description
     }
   }
 }

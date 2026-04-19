@@ -193,33 +193,56 @@
 }
 
 /* =========================================================================
-   Dark mode — same principles, inverted neutrals. Plain, not dramatic.
+   Dark mode — data-theme attribute controlled (+ system fallback).
    ========================================================================= */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background:        var(--color-neutral-950);
-    --color-background-subtle: var(--color-neutral-900);
-    --color-background-muted:  var(--color-neutral-800);
-    --color-background-inverse: var(--color-white);
+html[data-theme='dark'] {
+  --color-background:        var(--color-neutral-950);
+  --color-background-subtle: var(--color-neutral-900);
+  --color-background-muted:  var(--color-neutral-800);
+  --color-background-inverse: var(--color-white);
 
-    --color-foreground:         var(--color-neutral-50);
-    --color-foreground-muted:   var(--color-neutral-400);
-    --color-foreground-subtle:  var(--color-neutral-500);
-    --color-foreground-inverse: var(--color-neutral-950);
+  --color-foreground:         var(--color-neutral-50);
+  --color-foreground-muted:   var(--color-neutral-400);
+  --color-foreground-subtle:  var(--color-neutral-500);
+  --color-foreground-inverse: var(--color-neutral-950);
 
-    --color-border:        var(--color-neutral-800);
-    --color-border-strong: var(--color-neutral-700);
-    --color-border-muted:  var(--color-neutral-900);
+  --color-border:        var(--color-neutral-800);
+  --color-border-strong: var(--color-neutral-700);
+  --color-border-muted:  var(--color-neutral-900);
 
-    --color-primary:            var(--color-primary-500);
-    --color-primary-hover:      var(--color-primary-400);
-    --color-primary-foreground: var(--color-white);
+  --color-primary:            var(--color-primary-500);
+  --color-primary-hover:      var(--color-primary-400);
+  --color-primary-foreground: var(--color-white);
 
-    --color-accent:             var(--color-white);
-    --color-accent-foreground:  var(--color-neutral-950);
+  --color-accent:             var(--color-white);
+  --color-accent-foreground:  var(--color-neutral-950);
 
-    --color-ring: var(--color-white);
-  }
+  --color-ring: var(--color-white);
+}
+
+html[data-theme='light'] {
+  --color-background:        var(--color-white);
+  --color-background-subtle: var(--color-neutral-50);
+  --color-background-muted:  var(--color-neutral-100);
+  --color-background-inverse: var(--color-neutral-950);
+
+  --color-foreground:         var(--color-neutral-950);
+  --color-foreground-muted:   var(--color-neutral-600);
+  --color-foreground-subtle:  var(--color-neutral-500);
+  --color-foreground-inverse: var(--color-white);
+
+  --color-border:        var(--color-neutral-200);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-muted:  var(--color-neutral-100);
+
+  --color-primary:            var(--color-primary-600);
+  --color-primary-hover:      var(--color-primary-700);
+  --color-primary-foreground: var(--color-white);
+
+  --color-accent:             var(--color-neutral-950);
+  --color-accent-foreground:  var(--color-white);
+
+  --color-ring: var(--color-neutral-950);
 }
 
 /* =========================================================================
@@ -367,6 +390,22 @@ h1, h2, h3 {
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
 }
+
+/* Links inherit color and drop underline by default. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Layout utilities */
+.container-max {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: clamp(24px, 5vw, 64px);
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
 
 /* Selection — brand-colored, restrained. */
 ::selection {
