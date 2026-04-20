@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { DurationBadge } from '@/components/ui/DurationBadge';
 import { LikeCount } from './LikeCount';
@@ -7,7 +8,10 @@ type VideoCardVideo = {
   title?: string | null;
   landscapeThumbnail?: string | null;
   likeNum: number;
-  duration: { minutes?: number | null; seconds?: number | null } | null | undefined;
+  duration:
+    | { minutes?: number | null; seconds?: number | null }
+    | null
+    | undefined;
 };
 
 type VideoCardProps = {
@@ -24,10 +28,12 @@ export function VideoCard({ video, width = 280 }: VideoCardProps) {
     >
       <div className="relative aspect-video overflow-hidden rounded-sm bg-background-muted">
         {video.landscapeThumbnail && (
-          <img
+          <Image
             src={video.landscapeThumbnail}
             alt={video.title ?? ''}
-            className="w-full h-full object-cover transition-transform duration-[var(--duration-slow)] ease-[var(--ease-standard)]"
+            fill
+            sizes="280px"
+            className="object-cover transition-transform duration-[var(--duration-slow)] ease-[var(--ease-standard)]"
           />
         )}
         <DurationBadge duration={video.duration} />
