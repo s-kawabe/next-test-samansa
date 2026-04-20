@@ -41,7 +41,7 @@ export function Shelf({ children, gap = 16 }: ShelfProps) {
   };
 
   const overlayBase = cn(
-    'absolute inset-y-0 z-[10] w-16 flex items-center',
+    'absolute inset-y-0 z-[10] w-24 flex items-center',
     'transition-opacity duration-[var(--duration-base)] ease-[var(--ease-standard)]',
     'cursor-pointer border-none bg-transparent p-0',
   );
@@ -55,7 +55,7 @@ export function Shelf({ children, gap = 16 }: ShelfProps) {
         className={cn(
           overlayBase,
           'left-0 justify-start',
-          'bg-gradient-to-r from-background to-transparent',
+          'bg-gradient-to-r from-background to-background/0',
           canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none',
         )}
       >
@@ -77,7 +77,7 @@ export function Shelf({ children, gap = 16 }: ShelfProps) {
         className={cn(
           overlayBase,
           'right-0 justify-end',
-          'bg-gradient-to-l from-background to-transparent',
+          'bg-gradient-to-l from-background to-background/0',
           canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none',
         )}
       >
