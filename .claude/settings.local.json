@@ -31,7 +31,19 @@
       "Bash(pnpm test *)",
       "Bash(pnpm add *)",
       "Bash(git revert *)",
-      "Bash(git cherry-pick *)"
+      "Bash(git cherry-pick *)",
+      "WebFetch(domain:claude.ai)",
+      "Bash(pnpm codegen *)",
+      "Bash(awk '/^export type Query = \\\\{/,/^\\\\};/' /Users/shintarokawabe/ghq/github.com/s-kawabe/next-test-samansa/src/lib/graphql/generated/graphql.ts)",
+      "Bash(git mv *)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(python3 *)",
+      "Bash(grep -o '\"fills\":\\\\[{\"type\":\"SOLID\",\"color\":{\"r\":[0-9.]*,\"g\":[0-9.]*,\"b\":[0-9.]*' \"/Users/shintarokawabe/ghq/github.com/s-kawabe/next-test-samansa/prototyping/Samansa Mock _Standalone.html\")",
+      "Bash(grep -ao 'color: *#[0-9a-fA-F]\\\\{3,8\\\\}' \"/Users/shintarokawabe/ghq/github.com/s-kawabe/next-test-samansa/prototyping/Samansa Mock _Standalone.html\")",
+      "Bash(grep -ao 'background[^;:]*:[^;]*#[0-9a-fA-F]\\\\{3,8\\\\}' \"/Users/shintarokawabe/ghq/github.com/s-kawabe/next-test-samansa/prototyping/Samansa Mock _Standalone.html\")",
+      "Bash(pnpm remove *)",
+      "Bash(pnpm build *)"
     ]
   }
 }

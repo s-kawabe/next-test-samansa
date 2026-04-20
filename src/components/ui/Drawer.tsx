@@ -1,6 +1,6 @@
 'use client';
 
-import * as BaseDrawer from '@base-ui/react/drawer';
+import { Drawer as BaseDrawer } from '@base-ui/react/drawer';
 import type { ReactNode } from 'react';
 
 type DrawerProps = {

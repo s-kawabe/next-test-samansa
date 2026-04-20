@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, JetBrains_Mono, Zen_Kaku_Gothic_New } from 'next/font/google';
 import { Providers } from '@/providers';
+import { TopBar } from '@/components/features/navigation/TopBar';
+import { Footer } from '@/components/features/navigation/Footer';
 import '@/styles/globals.css';
 
 const spaceGrotesk = Space_Grotesk({
@@ -39,7 +41,11 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${zenKakuGothicNew.variable}`}
     >
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <TopBar />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );
