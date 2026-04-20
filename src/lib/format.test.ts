@@ -6,7 +6,7 @@ import {
   formatLikes,
   formatRelative,
   indexOfTotal,
-} from '../format';
+} from './format';
 
 // ---- formatDurationShort ----
 

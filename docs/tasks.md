@@ -47,7 +47,7 @@ src/
   lib/
     format.ts
     apolloClient.ts
-    apolloRsc.ts
+    apolloRSC.ts
     graphql/...
 ```
 
@@ -55,13 +55,14 @@ src/
 
 - **デフォルトはServer Component**。`useState` / `useEffect` / ブラウザAPI が必要な場合のみ `'use client'`
 - Client Component は末端（葉）に閉じ込め、Server Component が Client Component を子として渡す構成を優先する
-- RSCでのデータ取得は `lib/apolloRsc.ts` の `query()` を使用する
+- RSCでのデータ取得は `lib/apolloRSC.ts` の `query()` を使用する
 
 ---
 
 ## Phase 1: 基盤セットアップ
 
 ### T-01: グローバルCSS・デザイントークンの構築
+
 ファイル: `src/styles/globals.css`
 
 - CSS変数でデザイントークンを定義
@@ -74,6 +75,7 @@ src/
 - `html, body` にデザイントークンを適用
 
 ### T-02: フォント・レイアウト設定の更新
+
 ファイル: `src/app/layout.tsx`
 
 - フォント設定: display用（例: Playfair Display）・mono用（Geist Mono）を CSS変数に割り当て
@@ -82,6 +84,7 @@ src/
 - `.font-display { font-family: var(--font-display), ... }` クラスを globals.css に追加
 
 ### T-03: lib/format.ts の実装
+
 ファイル: `src/lib/format.ts`
 
 - `Duration` 型定義: `{ minutes: number; seconds: number }`
@@ -92,6 +95,7 @@ src/
 - `indexOfTotal(index, total)` — "01 / 05" 形式（ゼロ埋め）
 
 ### T-04: GraphQL クエリの更新と型再生成
+
 ファイル: `src/lib/graphql/query/*.graphql`
 
 - `getHomeScreens.graphql`: 映画に `likeNum`, カテゴリに `description` を追加
@@ -100,8 +104,9 @@ src/
 - `getVideoComments.graphql`: コメントに `likeNum`, `user { id name avatar }`, カーソルページネーション（`first`, `after`, `pageInfo`, `allCount`）を追加
 - `pnpm codegen` を実行して `src/lib/graphql/generated/` を更新
 
-### T-05: lib/apolloRsc.ts の追加
-ファイル: `src/lib/apolloRsc.ts`
+### T-05: lib/apolloRSC.ts の追加
+
+ファイル: `src/lib/apolloRSC.ts`
 
 - RSC（Server Component）からApolloでデータ取得するためのユーティリティ
 - `query()` 関数を実装（`makeClient` を使い毎リクエスト新規クライアントを生成）
@@ -113,6 +118,7 @@ src/
 ドメイン知識を持たない、汎用的なUIコンポーネント群。すべてServer Componentとして実装し、インタラクションが必要なものだけClient Componentにする。
 
 ### T-06: Eyebrow コンポーネント
+
 ファイル: `src/components/ui/Eyebrow.tsx` — **Server Component**
 
 - モノスペースの小見出しラベル（uppercase, letter-spacing）
@@ -120,18 +126,21 @@ src/
 - CSS変数を使った色指定
 
 ### T-07: Avatar コンポーネント
+
 ファイル: `src/components/ui/Avatar.tsx` — **Server Component**
 
 - ユーザー名イニシャルを円形チップで表示
 - `label` (表示文字列), `size` (px, デフォルト36) props
 
 ### T-08: DurationBadge コンポーネント
+
 ファイル: `src/components/ui/DurationBadge.tsx` — **Server Component**
 
 - サムネイル右下に重ねるバッジ（`position: absolute`）
 - `Duration` 型を受け取り `formatDurationShort` で表示
 
 ### T-09: Breadcrumb コンポーネント
+
 ファイル: `src/components/ui/Breadcrumb.tsx` — **Server Component**
 
 - `items: { label: string; href?: string }[]` を受け取る
@@ -139,6 +148,7 @@ src/
 - モノスペース、`/` 区切り
 
 ### T-10: Shelf コンポーネント
+
 ファイル: `src/components/ui/Shelf.tsx` — **Client Component** (`'use client'`)
 
 - 横スクロールコンテナ（`overflow-x: auto`, スナップ）
@@ -153,6 +163,7 @@ src/
 ドメイン知識（video / category / comment）を持つコンポーネント群。
 
 ### T-12: LikeCount コンポーネント
+
 ファイル: `src/components/features/video/LikeCount.tsx` — **Server Component**
 
 - "♥ 12.5k" 形式のいいね数表示
@@ -160,6 +171,7 @@ src/
 - `formatLikes()` を使用
 
 ### T-13: VideoCard コンポーネント
+
 ファイル: `src/components/features/video/VideoCard.tsx` — **Server Component**
 
 - `/videos/[id]` へのリンクカード
@@ -168,12 +180,14 @@ src/
 - `width` props でサイズ調整可能
 
 ### T-14: VideoHero コンポーネント
+
 ファイル: `src/components/features/video/VideoHero.tsx` — **Server Component**
 
 - フルブリードのサムネイル画像（aspect: 21/9）
 - 下端へのグラデーションオーバーレイ（背景色へフェードアウト）
 
 ### T-15: LikeButton コンポーネント
+
 ファイル: `src/components/features/video/LikeButton.tsx` — **Client Component** (`'use client'`)
 
 - いいね/解除のトグルボタン（楽観的更新）
@@ -183,6 +197,7 @@ src/
 - TODO: `addLike` / `removeLike` Mutation への接続は別タスク
 
 ### T-16: CategoryVideoCard コンポーネント
+
 ファイル: `src/components/features/category/CategoryVideoCard.tsx` — **Server Component**
 
 - カテゴリ詳細ページのグリッドカード
@@ -191,6 +206,7 @@ src/
 - `/videos/[id]` へのリンク
 
 ### T-17: CategoryShelf コンポーネント
+
 ファイル: `src/components/features/category/CategoryShelf.tsx` — **Server Component**
 
 - トップページの1カテゴリ行
@@ -199,6 +215,7 @@ src/
 - `categoryId`, `categoryName`, `tagline`, `index`, `total`, `videos` props
 
 ### T-18: CommentItem コンポーネント
+
 ファイル: `src/components/features/comment/CommentItem.tsx` — **Server Component**
 
 - コメント1件の表示
@@ -206,6 +223,7 @@ src/
 - 先頭以外は上ボーダーで区切る（`first` prop）
 
 ### T-19: CommentsSidebar コンポーネント
+
 ファイル: `src/components/features/comment/CommentsSidebar.tsx` — **Client Component** (`'use client'`)
 
 - Apollo `useQuery` + `fetchMore` によるカーソルベースページネーション
@@ -218,6 +236,7 @@ src/
 ## Phase 4: レイアウトコンポーネント実装
 
 ### T-20: TopBar コンポーネント
+
 ファイル: `src/layout/TopBar.tsx` — **Server Component**
 
 - sticky ヘッダー（`position: sticky; top: 0; z-index: 20`）
@@ -227,6 +246,7 @@ src/
 - 右: ユーザーアバター
 
 ### T-21: Footer コンポーネント
+
 ファイル: `src/layout/Footer.tsx` — **Server Component**
 
 - "samansa." の大きなロゴ + "© 2026 · Curated cinema" のコピーライト
@@ -236,9 +256,11 @@ src/
 ## Phase 5: ページ実装
 
 ### T-22: トップページ
+
 ファイル: `src/app/page.tsx`、`src/app/loading.tsx`
 
 **page.tsx（RSC）**
+
 - `getHomeScreens` でカテゴリ＋映画一覧を一括取得（カテゴリと動画を分割取得しない）
   - API の `homeScreens` はカテゴリとエディターがキュレーションした動画リストが一体で返る設計のため、分割不可
   - パフォーマンスは `revalidate` による ISR でカバーする
@@ -247,12 +269,15 @@ src/
 - `export const revalidate = 60`
 
 **loading.tsx**
+
 - スケルトンUIまたはスピナーでローディング状態を表示
 
 ### T-23: カテゴリ詳細ページ
+
 ファイル: `src/app/categories/[id]/page.tsx`、`src/app/categories/[id]/loading.tsx`
 
 **page.tsx（RSC）**
+
 - `getCategory` でカテゴリ情報＋映画一覧を取得
 - 存在しないIDの場合 `notFound()` を呼ぶ
 - `Breadcrumb`（Home / カテゴリ名）
@@ -261,12 +286,15 @@ src/
 - `export const revalidate = 60`
 
 **loading.tsx**
+
 - スケルトンUIでローディング状態を表示
 
 ### T-24: 映画詳細ページ
+
 ファイル: `src/app/videos/[id]/page.tsx`、`src/app/videos/[id]/loading.tsx`
 
 **page.tsx（RSC）**
+
 - `getOriginalVideo` と `getVideoComments` を `Promise.all` で並列取得
 - 存在しないIDの場合 `notFound()` を呼ぶ
 - `VideoHero`（フルブリードサムネイル）
@@ -278,9 +306,11 @@ src/
 - `export const revalidate = 60`
 
 **loading.tsx**
+
 - スケルトンUIでローディング状態を表示
 
 ### T-25: Not Found ページ
+
 ファイル: `src/app/not-found.tsx`
 
 - `notFound()` 呼び出し時に表示される共通の404ページ
@@ -291,7 +321,8 @@ src/
 ## Phase 6: テスト実装
 
 ### T-26: lib/format.ts のユニットテスト
-ファイル: `src/lib/__tests__/format.test.ts`
+
+ファイル: `src/lib/format.test.ts`
 
 - `formatDurationShort`: null, 0秒, 通常値
 - `formatDurationFull`: null, 通常値
@@ -300,7 +331,8 @@ src/
 - `indexOfTotal`: 1桁・2桁のゼロ埋め確認
 
 ### T-27: ui/ コンポーネントのユニットテスト
-ファイル: `src/components/ui/__tests__/*.test.tsx`
+
+ファイル: `src/components/ui/*.test.tsx`
 
 - `Eyebrow`: tone ごとの色クラス・テキスト表示
 - `Breadcrumb`: href あり→`<a>` レンダリング、href なし→`<span>` レンダリング、末尾要素の非リンク
@@ -308,7 +340,8 @@ src/
 - `Avatar`: label の表示、size による width/height 適用
 
 ### T-28: features/ コンポーネントのユニットテスト
-ファイル: `src/components/features/**/__tests__/*.test.tsx`
+
+ファイル: `src/components/features/**/*.test.tsx`
 
 - `VideoCard`: サムネイル alt テキスト・`/videos/[id]` へのリンク・タイトル表示
 - `CategoryVideoCard`: 連番のゼロ埋め・説明60文字切り詰め・再生時間・いいね数
@@ -316,19 +349,23 @@ src/
 - `CommentItem`: ユーザー名・本文・日付・first フラグによるボーダー有無
 
 ### T-29: ページの統合テスト（要件シナリオ）
-ファイル: `src/app/**/__tests__/*.test.tsx`
+
+ファイル: `src/app/**/*.test.tsx`
 
 **トップページ**
+
 - カテゴリ名と映画サムネイルが表示される
 - 各カテゴリの「View all」リンクがカテゴリ詳細ページを向く
 - 各映画カードが映画詳細ページを向く
 
 **カテゴリ詳細ページ**
+
 - カテゴリ名と映画一覧が表示される
 - 映画カードが映画詳細ページを向く
 - 存在しないIDで `notFound` が呼ばれる
 
 **映画詳細ページ**
+
 - タイトル・説明・いいね数が表示される
 - コメント一覧が表示される
 - 存在しないIDで `notFound` が呼ばれる
