@@ -42,7 +42,7 @@ src/
         CommentItem.tsx             # Server Component
         CommentsSidebar.tsx         # Client Component（Apollo fetchMore）
   layout/
-    TopBar.tsx                      # Server Component（ThemeToggle を子として含む）
+    TopBar.tsx                      # Server Component
     Footer.tsx                      # Server Component
   lib/
     format.ts
@@ -64,7 +64,7 @@ src/
 ### T-01: グローバルCSS・デザイントークンの構築
 ファイル: `src/styles/globals.css`
 
-- CSS変数でライトテーマのデザイントークンを定義（ダークテーマ対応は行わない）
+- CSS変数でデザイントークンを定義
   - `--color-background`, `--color-background-muted`, `--color-foreground`, `--color-foreground-muted`, `--color-foreground-subtle`
   - `--color-border`, `--color-border-strong`, `--color-primary`, `--color-primary-foreground`
 - ユーティリティ: `.container-max`（max-width: 1440px, padding-inline: clamp(24px, 5vw, 64px)）
