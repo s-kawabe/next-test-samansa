@@ -106,10 +106,17 @@ src/
 
 ### T-05: lib/apolloRSC.ts の追加
 
-ファイル: `src/lib/apolloRSC.ts`
+ファイル: `src/lib/apolloRSC.ts`, `src/lib/apolloClientFactory.ts`
 
-- RSC（Server Component）からApolloでデータ取得するためのユーティリティ
-- `query()` 関数を実装（`makeClient` を使い毎リクエスト新規クライアントを生成）
+- `apolloClientFactory.ts`: `ApolloClient` / `InMemoryCache` を `@apollo/client-integration-nextjs` からインポートしてクライアントを生成するファクトリ
+- `apolloRSC.ts`: `registerApolloClient(createApolloClient)` で `getClient` / `query` を export
+  - `registerApolloClient` は React.cache でインスタンスをリクエスト単位でメモ化する
+  - **SC → CC のキャッシュ共有フロー**:
+    1. SC の async 関数で `query()` または `getClient().query()` を呼ぶ
+    2. Apollo キャッシュにデータが載る
+    3. `@apollo/client-integration-nextjs` がキャッシュをストリームでクライアントへ転送
+    4. CC の `useQuery`（`fetchPolicy: 'cache-first'`）がキャッシュにヒット → ネットワーク再取得なし
+  - `PreloadQuery` は使用しない（SC で直接 query を叩く方針）
 
 ---
 
