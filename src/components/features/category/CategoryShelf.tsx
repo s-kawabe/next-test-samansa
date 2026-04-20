@@ -32,7 +32,7 @@ export function CategoryShelf({
         </h2>
         <Link
           href={`/categories/${categoryId}`}
-          className="font-label text-xs tracking-wider text-foreground-subtle underline decoration-transparent underline-offset-2 transition-[color,text-decoration-color] duration-[var(--duration-fast)] hover:text-foreground hover:decoration-current"
+          className="font-label text-xs tracking-wider text-foreground-subtle transition-colors duration-[var(--duration-fast)] hover:text-foreground relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-[width] after:duration-[var(--duration-fast)] hover:after:w-full"
         >
           VIEW ALL →
         </Link>
