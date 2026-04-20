@@ -1,20 +1,14 @@
 import type { Metadata } from 'next';
-import localFont from 'next/font/local';
-import { Manrope } from 'next/font/google';
+import { LINE_Seed_JP, Manrope } from 'next/font/google';
 import { Providers } from '@/providers';
 import { TopBar } from '@/components/features/navigation/TopBar';
 import { Footer } from '@/components/features/navigation/Footer';
 import '@/styles/globals.css';
 
-// LINE Seed JP A — download from https://seed.line.me/index_jp.html#seed-font
-// Place woff2 files in src/app/fonts/
-const lineSeedJP = localFont({
-  src: [
-    { path: './fonts/LINESeedJP_A_Th.woff2', weight: '100', style: 'normal' },
-    { path: './fonts/LINESeedJP_A_Rg.woff2', weight: '400', style: 'normal' },
-    { path: './fonts/LINESeedJP_A_Bd.woff2', weight: '700', style: 'normal' },
-  ],
+const lineSeedJP = LINE_Seed_JP({
   variable: '--font-line-seed-jp',
+  subsets: ['latin'],
+  weight: ['100', '400', '700', '800'],
   display: 'swap',
 });
 
