@@ -9,6 +9,7 @@ import { VideoHero } from '@/components/features/video/VideoHero';
 import { VideoCard } from '@/components/features/video/VideoCard';
 import { LikeCount } from '@/components/features/video/LikeCount';
 import { CommentsDrawer } from '@/components/features/comment/CommentsDrawer';
+import { Play } from 'lucide-react';
 import { formatDurationFull } from '@/lib/format';
 
 type Props = { id: string };
@@ -59,9 +60,18 @@ export function VideoPageClient({ id }: Props) {
 
         <div className="grid grid-cols-[1fr_420px] gap-12 items-start">
           <div>
-            <h1 className="font-sans text-5xl font-black tracking-tighter leading-tight text-foreground mb-4">
-              {video.title}
-            </h1>
+            <div className="flex items-start justify-between gap-6 mb-4">
+              <h1 className="font-sans text-5xl font-black tracking-tighter leading-tight text-foreground">
+                {video.title}
+              </h1>
+              <button
+                type="button"
+                aria-label="Play"
+                className="shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-primary text-primary-foreground hover:bg-primary-hover transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]"
+              >
+                <Play size={22} fill="currentColor" strokeWidth={0} className="translate-x-0.5" />
+              </button>
+            </div>
 
             <div className="flex gap-4 items-center mb-8">
               {duration && (
