@@ -12,7 +12,9 @@ export function HomePageClient() {
     <div>
       <section className="container-max pt-24 pb-16">
         <h1 className="font-sans text-7xl font-black tracking-tighter leading-tight text-foreground">
-          Curated cinema,<br />your way.
+          Curated cinema,
+          <br />
+          your way.
         </h1>
         <p className="mt-4 font-label text-xs tracking-wider uppercase text-foreground-subtle">
           {homeScreens.length} CATEGORIES · CURATED SHORT CINEMA
@@ -20,7 +22,7 @@ export function HomePageClient() {
       </section>
 
       <div className="container-max">
-        {homeScreens.map((screen, i) => {
+        {homeScreens.map((screen) => {
           const category = screen.category;
           if (!category) return null;
           return (
@@ -28,9 +30,6 @@ export function HomePageClient() {
               key={screen.id}
               categoryId={category.id}
               categoryName={category.name ?? ''}
-              tagline={null}
-              index={i + 1}
-              total={homeScreens.length}
               videos={screen.videos ?? []}
             />
           );

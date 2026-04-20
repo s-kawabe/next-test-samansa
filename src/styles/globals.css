@@ -72,10 +72,15 @@
   --color-ring:    var(--color-neutral-50);
   --color-overlay: oklch(0 0 0 / 0.8);
 
-  /* On imagery (thumbnails, stills): independent of page light/dark — dark frosted pill + light type. */
+  /* Thumbnail badges: always light type on dark frosted surface. */
   --color-on-media-badge-bg: oklch(0 0 0 / 0.72);
   --color-on-media-badge-ring: oklch(1 0 0 / 0.18);
   --color-on-media-badge-foreground: var(--color-white);
+
+  /* Horizontal shelf scroll controls — frosted circular hit target. */
+  --shelf-control-bg: color-mix(in oklch, var(--color-background) 62%, transparent);
+  --shelf-control-bg-hover: color-mix(in oklch, var(--color-background) 82%, transparent);
+  --shelf-control-edge: color-mix(in oklch, var(--color-foreground) 20%, transparent);
 
   /* ---------- Typography ----------
      LINE Seed JP A for UI / body / headings. Manrope for labels, eyebrows,
@@ -246,6 +251,10 @@
   --color-on-media-badge-bg: var(--color-on-media-badge-bg);
   --color-on-media-badge-ring: var(--color-on-media-badge-ring);
   --color-on-media-badge-foreground: var(--color-on-media-badge-foreground);
+
+  --color-shelf-control-bg: var(--shelf-control-bg);
+  --color-shelf-control-bg-hover: var(--shelf-control-bg-hover);
+  --color-shelf-control-edge: var(--shelf-control-edge);
 
   --color-border: var(--color-border);
   --color-border-strong: var(--color-border-strong);

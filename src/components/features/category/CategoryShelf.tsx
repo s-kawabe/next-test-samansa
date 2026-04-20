@@ -38,7 +38,7 @@ export function CategoryShelf({
         </Link>
       </div>
 
-      <Shelf gap={16}>
+      <Shelf gap={0}>
         {videos.map((video) => (
           <div key={video.id} className="snap-start shrink-0">
             <VideoCard video={video} width={280} />

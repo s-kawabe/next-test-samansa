@@ -15,7 +15,7 @@ export function DurationBadge({ duration }: DurationBadgeProps) {
   if (!text) return null;
 
   return (
-    <span className="absolute bottom-2 right-2 bg-[oklch(0_0_0/.65)] text-foreground-inverse font-label text-xs font-medium tracking-wider py-[2px] px-2 rounded-xs">
+    <span className="absolute bottom-2 right-2 bg-on-media-badge-bg text-on-media-badge-foreground font-label text-xs font-medium tracking-wider py-0.5 px-2 rounded-xs ring-1 ring-inset ring-on-media-badge-ring">
       {text}
     </span>
   );
