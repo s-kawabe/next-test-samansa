@@ -73,12 +73,13 @@
   --color-overlay: oklch(0 0 0 / 0.6);
 
   /* ---------- Typography ----------
-     Geist Sans for UI / body. Geist Mono for meta, counts, timestamps. */
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system,
+     Zen Kaku Gothic New for UI / body. JetBrains Mono for meta, counts,
+     timestamps. Space Grotesk for display / brand headlines. */
+  --font-sans: var(--font-zen-kaku), ui-sans-serif, system-ui, -apple-system,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, 'SF Mono', Menlo,
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, 'SF Mono', Menlo,
     Consolas, monospace;
-  --font-display: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
 
   /* Type scale — generous steps, biased toward bold display sizes. */
   --text-xs:   0.75rem;     /*  12 */
@@ -366,6 +367,32 @@ a {
   outline: 2px solid var(--color-ring);
   outline-offset: 2px;
   border-radius: var(--radius-xs);
+}
+
+/* =========================================================================
+   Drawer animations (base-ui @base-ui/react)
+   ========================================================================= */
+[data-base-ui-drawer-popup] {
+  transform: translateX(100%);
+  transition: transform var(--duration-slow) var(--ease-standard);
+}
+[data-base-ui-drawer-popup][data-open] {
+  transform: none;
+}
+[data-base-ui-drawer-popup][data-starting-style],
+[data-base-ui-drawer-popup][data-ending-style] {
+  transform: translateX(100%);
+}
+[data-base-ui-drawer-backdrop] {
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-standard);
+}
+[data-base-ui-drawer-backdrop][data-open] {
+  opacity: 1;
+}
+[data-base-ui-drawer-backdrop][data-starting-style],
+[data-base-ui-drawer-backdrop][data-ending-style] {
+  opacity: 0;
 }
 
 /* Reduced motion — honor user preference. */
