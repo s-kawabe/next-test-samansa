@@ -47,30 +47,30 @@
   --color-primary-900: oklch(0.260 0.080 22);
   --color-primary-950: oklch(0.180 0.055 22);
 
-  /* ---------- Semantic (light mode defaults) ---------- */
-  --color-background:        var(--color-white);
-  --color-background-subtle: var(--color-neutral-50);
-  --color-background-muted:  var(--color-neutral-100);
-  --color-background-inverse: var(--color-neutral-950);
+  /* ---------- Semantic (dark mode — default) ---------- */
+  --color-background:         var(--color-neutral-950);
+  --color-background-subtle:  var(--color-neutral-900);
+  --color-background-muted:   var(--color-neutral-800);
+  --color-background-inverse: var(--color-white);
 
-  --color-foreground:         var(--color-neutral-950);
-  --color-foreground-muted:   var(--color-neutral-600);
+  --color-foreground:         var(--color-neutral-50);
+  --color-foreground-muted:   var(--color-neutral-400);
   --color-foreground-subtle:  var(--color-neutral-500);
-  --color-foreground-inverse: var(--color-white);
+  --color-foreground-inverse: var(--color-neutral-950);
 
-  --color-border:        var(--color-neutral-200);
-  --color-border-strong: var(--color-neutral-300);
-  --color-border-muted:  var(--color-neutral-100);
+  --color-border:        var(--color-neutral-800);
+  --color-border-strong: var(--color-neutral-700);
+  --color-border-muted:  var(--color-neutral-900);
 
-  --color-primary:            var(--color-primary-600);
-  --color-primary-hover:      var(--color-primary-700);
+  --color-primary:            var(--color-primary-400);
+  --color-primary-hover:      var(--color-primary-300);
   --color-primary-foreground: var(--color-white);
 
-  --color-accent:             var(--color-neutral-950);
-  --color-accent-foreground:  var(--color-white);
+  --color-accent:             var(--color-neutral-50);
+  --color-accent-foreground:  var(--color-neutral-950);
 
-  --color-ring:    var(--color-neutral-950);
-  --color-overlay: oklch(0 0 0 / 0.6);
+  --color-ring:    var(--color-neutral-50);
+  --color-overlay: oklch(0 0 0 / 0.8);
 
   /* ---------- Typography ----------
      LINE Seed JP A for UI / body / headings. Manrope for labels, eyebrows,
@@ -190,6 +190,35 @@
   --z-overlay: 40;
   --z-modal:   50;
   --z-toast:   60;
+}
+
+/* ---------- Semantic (light mode override) ---------- */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background:         var(--color-white);
+    --color-background-subtle:  var(--color-neutral-50);
+    --color-background-muted:   var(--color-neutral-100);
+    --color-background-inverse: var(--color-neutral-950);
+
+    --color-foreground:         var(--color-neutral-950);
+    --color-foreground-muted:   var(--color-neutral-600);
+    --color-foreground-subtle:  var(--color-neutral-500);
+    --color-foreground-inverse: var(--color-white);
+
+    --color-border:        var(--color-neutral-200);
+    --color-border-strong: var(--color-neutral-300);
+    --color-border-muted:  var(--color-neutral-100);
+
+    --color-primary:            var(--color-primary-600);
+    --color-primary-hover:      var(--color-primary-700);
+    --color-primary-foreground: var(--color-white);
+
+    --color-accent:             var(--color-neutral-950);
+    --color-accent-foreground:  var(--color-white);
+
+    --color-ring:    var(--color-neutral-950);
+    --color-overlay: oklch(0 0 0 / 0.6);
+  }
 }
 
 
