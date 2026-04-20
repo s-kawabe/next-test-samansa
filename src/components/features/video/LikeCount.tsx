@@ -1,4 +1,5 @@
 import { formatLikes } from '@/lib/format';
+import { cn } from '@/lib/cn';
 
 type LikeCountProps = {
   count: number;
@@ -8,13 +9,10 @@ type LikeCountProps = {
 export function LikeCount({ count, emphasized = false }: LikeCountProps) {
   return (
     <span
-      style={{
-        color: emphasized ? 'var(--color-primary)' : 'var(--color-foreground-muted)',
-        fontFamily: 'var(--font-mono)',
-        fontSize: 'var(--text-xs)',
-        fontWeight: 500,
-        letterSpacing: 'var(--tracking-wide)',
-      }}
+      className={cn(
+        'font-mono text-xs font-medium tracking-wide',
+        emphasized ? 'text-primary' : 'text-foreground-muted',
+      )}
     >
       ♥ {formatLikes(count)}
     </span>

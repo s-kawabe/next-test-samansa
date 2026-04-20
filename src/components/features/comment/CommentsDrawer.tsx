@@ -5,6 +5,7 @@ import {
   GetVideoCommentsDocument,
   type GetVideoCommentsQuery,
 } from '@/lib/graphql/generated/graphql';
+import { Button } from '@/components/ui/Button';
 import { Drawer } from '@/components/ui/Drawer';
 import { CommentItem } from './CommentItem';
 
@@ -41,24 +42,9 @@ function CommentsDrawerContent({ videoId }: CommentsDrawerProps) {
   };
 
   return (
-    <div style={{ padding: 'var(--spacing-6)', display: 'flex', flexDirection: 'column' }}>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 'var(--spacing-4)',
-        }}
-      >
-        <span
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--text-xs)',
-            letterSpacing: 'var(--tracking-wider)',
-            textTransform: 'uppercase',
-            color: 'var(--color-foreground-subtle)',
-          }}
-        >
+    <div className="p-6 flex flex-col">
+      <div className="flex justify-between items-center mb-4">
+        <span className="font-mono text-xs tracking-wider uppercase text-foreground-subtle">
           COMMENTS · {allCount}
         </span>
       </div>
@@ -72,25 +58,14 @@ function CommentsDrawerContent({ videoId }: CommentsDrawerProps) {
       </div>
 
       {hasNextPage && (
-        <button
-          type="button"
+        <Button
           onClick={loadMore}
-          style={{
-            marginTop: 'var(--spacing-4)',
-            padding: 'var(--spacing-3) var(--spacing-4)',
-            border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-sm)',
-            background: 'transparent',
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--text-xs)',
-            color: 'var(--color-foreground-muted)',
-            cursor: 'pointer',
-            letterSpacing: 'var(--tracking-wider)',
-            textTransform: 'uppercase',
-          }}
+          variant="ghost"
+          size="sm"
+          className="mt-4 py-3 px-4 font-mono text-xs tracking-wider uppercase border-border"
         >
           Load more ({remaining} remaining)
-        </button>
+        </Button>
       )}
     </div>
   );
@@ -101,21 +76,7 @@ export function CommentsDrawer({ videoId }: CommentsDrawerProps) {
     <Drawer
       title="Comments"
       trigger={
-        <span
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            padding: 'var(--spacing-3) var(--spacing-4)',
-            border: '1px solid var(--color-border-strong)',
-            borderRadius: 'var(--radius-sm)',
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--text-xs)',
-            letterSpacing: 'var(--tracking-wider)',
-            textTransform: 'uppercase',
-            color: 'var(--color-foreground-muted)',
-            cursor: 'pointer',
-          }}
-        >
+        <span className="inline-flex items-center py-3 px-4 border border-border-strong rounded-sm font-mono text-xs tracking-wider uppercase text-foreground-muted cursor-pointer">
           Comments
         </span>
       }

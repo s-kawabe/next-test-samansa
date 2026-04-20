@@ -1,36 +1,11 @@
 export function Footer() {
   return (
-    <footer
-      style={{
-        borderTop: '1px solid var(--color-border)',
-        padding: 'var(--spacing-16) 0',
-      }}
-    >
-      <div
-        className="container-max"
-        style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-4)' }}
-      >
-        <p
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'var(--text-5xl)',
-            fontWeight: 900,
-            letterSpacing: 'var(--tracking-tighter)',
-            color: 'var(--color-foreground)',
-            lineHeight: 'var(--leading-none)',
-          }}
-        >
+    <footer className="border-t border-border py-16">
+      <div className="container-max flex flex-col gap-4">
+        <p className="font-display text-5xl font-black tracking-tighter text-foreground leading-none">
           samansa.
         </p>
-        <p
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--text-xs)',
-            letterSpacing: 'var(--tracking-wider)',
-            textTransform: 'uppercase',
-            color: 'var(--color-foreground-subtle)',
-          }}
-        >
+        <p className="font-mono text-xs tracking-wider uppercase text-foreground-subtle">
           © 2026 · Curated cinema
         </p>
       </div>

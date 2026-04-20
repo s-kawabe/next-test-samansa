@@ -1,6 +1,7 @@
 import { Avatar } from '@/components/ui/Avatar';
 import { LikeCount } from '@/components/features/video/LikeCount';
 import { formatRelative } from '@/lib/format';
+import { cn } from '@/lib/cn';
 
 type CommentUser = {
   id: string;
@@ -24,46 +25,17 @@ type CommentItemProps = {
 export function CommentItem({ comment, first = false }: CommentItemProps) {
   const userName = comment.user?.name ?? 'Anonymous';
   return (
-    <div
-      style={{
-        display: 'flex',
-        gap: 'var(--spacing-3)',
-        padding: 'var(--spacing-4) 0',
-        borderTop: first ? 'none' : '1px solid var(--color-border)',
-      }}
-    >
+    <div className={cn('flex gap-3 py-4', !first && 'border-t border-border')}>
       <Avatar label={userName} size={32} />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-1)' }}>
-        <div style={{ display: 'flex', alignItems: 'baseline', gap: 'var(--spacing-2)' }}>
-          <span
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 'var(--text-sm)',
-              fontWeight: 600,
-              color: 'var(--color-foreground)',
-            }}
-          >
-            {userName}
-          </span>
-          <span
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: 'var(--text-xs)',
-              color: 'var(--color-foreground-subtle)',
-            }}
-          >
+      <div className="flex-1 flex flex-col gap-1">
+        <div className="flex items-baseline gap-2">
+          <span className="font-sans text-sm font-semibold text-foreground">{userName}</span>
+          <span className="font-mono text-xs text-foreground-subtle">
             {formatRelative(comment.createdAt)}
           </span>
         </div>
         {comment.contents && (
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 'var(--text-sm)',
-              lineHeight: 'var(--leading-relaxed)',
-              color: 'var(--color-foreground)',
-            }}
-          >
+          <p className="font-sans text-sm leading-relaxed text-foreground">
             {comment.contents}
           </p>
         )}

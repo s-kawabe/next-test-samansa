@@ -10,36 +10,19 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <nav
       aria-label="breadcrumb"
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        flexWrap: 'wrap',
-        gap: 'var(--spacing-2)',
-        fontFamily: 'var(--font-mono)',
-        fontSize: 'var(--text-xs)',
-        letterSpacing: 'var(--tracking-wider)',
-        textTransform: 'uppercase',
-      }}
+      className="flex items-center flex-wrap gap-2 font-mono text-xs tracking-wider uppercase"
     >
       {items.map((item, i) => {
         const isLast = i === items.length - 1;
         return (
-          <span
-            key={i}
-            style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-2)' }}
-          >
-            {i > 0 && (
-              <span style={{ color: 'var(--color-foreground-subtle)' }}>/</span>
-            )}
+          <span key={i} className="flex items-center gap-2">
+            {i > 0 && <span className="text-foreground-subtle">/</span>}
             {isLast || !item.href ? (
-              <span style={{ color: 'var(--color-foreground)' }}>{item.label}</span>
+              <span className="text-foreground">{item.label}</span>
             ) : (
               <Link
                 href={item.href}
-                style={{
-                  color: 'var(--color-foreground-muted)',
-                  transition: `color var(--duration-fast)`,
-                }}
+                className="text-foreground-muted transition-colors duration-[var(--duration-fast)] hover:text-foreground"
               >
                 {item.label}
               </Link>
