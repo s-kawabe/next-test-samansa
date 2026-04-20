@@ -10,34 +10,11 @@ export function HomePageClient() {
 
   return (
     <div>
-      <section
-        style={{
-          padding: 'var(--spacing-24) 0 var(--spacing-16)',
-        }}
-        className="container-max"
-      >
-        <h1
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'var(--text-7xl)',
-            fontWeight: 900,
-            letterSpacing: 'var(--tracking-tighter)',
-            lineHeight: 'var(--leading-tight)',
-            color: 'var(--color-foreground)',
-          }}
-        >
+      <section className="container-max pt-24 pb-16">
+        <h1 className="font-display text-7xl font-black tracking-tighter leading-tight text-foreground">
           Curated cinema,<br />your way.
         </h1>
-        <p
-          style={{
-            marginTop: 'var(--spacing-4)',
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--text-xs)',
-            letterSpacing: 'var(--tracking-wider)',
-            textTransform: 'uppercase',
-            color: 'var(--color-foreground-subtle)',
-          }}
-        >
+        <p className="mt-4 font-mono text-xs tracking-wider uppercase text-foreground-subtle">
           {homeScreens.length} CATEGORIES · CURATED SHORT CINEMA
         </p>
       </section>

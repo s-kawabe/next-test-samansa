@@ -35,8 +35,8 @@ export function VideoPageClient({ id }: Props) {
         <VideoHero src={video.landscapeThumbnail} alt={video.title ?? ''} />
       )}
 
-      <div className="container-max" style={{ padding: 'var(--spacing-8) 0 var(--spacing-16)' }}>
-        <div style={{ marginBottom: 'var(--spacing-6)' }}>
+      <div className="container-max pt-8 pb-16">
+        <div className="mb-6">
           <Breadcrumb
             items={[
               { label: 'Home', href: '/' },
@@ -46,60 +46,20 @@ export function VideoPageClient({ id }: Props) {
           />
         </div>
 
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 420px',
-            gap: 'var(--spacing-12)',
-            alignItems: 'start',
-          }}
-        >
+        <div className="grid grid-cols-[1fr_420px] gap-12 items-start">
           <div>
-            <h1
-              style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'var(--text-5xl)',
-                fontWeight: 900,
-                letterSpacing: 'var(--tracking-tighter)',
-                lineHeight: 'var(--leading-tight)',
-                color: 'var(--color-foreground)',
-                marginBottom: 'var(--spacing-4)',
-              }}
-            >
+            <h1 className="font-display text-5xl font-black tracking-tighter leading-tight text-foreground mb-4">
               {video.title}
             </h1>
 
-            <div
-              style={{
-                display: 'flex',
-                gap: 'var(--spacing-4)',
-                alignItems: 'center',
-                marginBottom: 'var(--spacing-8)',
-              }}
-            >
+            <div className="flex gap-4 items-center mb-8">
               {duration && (
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-xs)',
-                    letterSpacing: 'var(--tracking-wider)',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-foreground-subtle)',
-                  }}
-                >
+                <span className="font-mono text-xs tracking-wider uppercase text-foreground-subtle">
                   {formatDurationFull(duration)}
                 </span>
               )}
               {category?.name && (
-                <span
-                  style={{
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: 'var(--text-xs)',
-                    letterSpacing: 'var(--tracking-wider)',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-foreground-subtle)',
-                  }}
-                >
+                <span className="font-mono text-xs tracking-wider uppercase text-foreground-subtle">
                   {category.name}
                 </span>
               )}
@@ -107,44 +67,22 @@ export function VideoPageClient({ id }: Props) {
             </div>
 
             {video.description && (
-              <p
-                style={{
-                  fontFamily: 'var(--font-sans)',
-                  fontSize: 'var(--text-base)',
-                  lineHeight: 'var(--leading-relaxed)',
-                  color: 'var(--color-foreground)',
-                  maxWidth: 'var(--container-prose)',
-                  marginBottom: 'var(--spacing-6)',
-                }}
-              >
+              <p className="font-sans text-base leading-relaxed text-foreground max-w-[var(--container-prose)] mb-6">
                 {video.description}
               </p>
             )}
 
-            <div
-              style={{
-                display: 'flex',
-                gap: 'var(--spacing-3)',
-                alignItems: 'center',
-                marginBottom: 'var(--spacing-12)',
-              }}
-            >
+            <div className="flex gap-3 items-center mb-12">
               <LikeButton videoId={video.id} initialCount={video.likeNum} />
               <CommentsDrawer videoId={video.id} />
             </div>
 
             {relatedVideos.length > 0 && (
               <div>
-                <div style={{ marginBottom: 'var(--spacing-6)' }}>
+                <div className="mb-6">
                   <Eyebrow tone="subtle">Related Films</Eyebrow>
                 </div>
-                <div
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 1fr)',
-                    gap: 'var(--spacing-4)',
-                  }}
-                >
+                <div className="grid grid-cols-3 gap-4">
                   {relatedVideos.map((rv) => (
                     <VideoCard key={rv.id} video={rv} />
                   ))}
