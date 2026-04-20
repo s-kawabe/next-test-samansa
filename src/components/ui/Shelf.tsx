@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
 type ShelfProps = {
@@ -39,8 +40,11 @@ export function Shelf({ children, gap = 16 }: ShelfProps) {
     el.scrollBy({ left: dir === 'right' ? 320 : -320, behavior: 'smooth' });
   };
 
-  const arrowBase =
-    'absolute top-1/2 -translate-y-1/2 z-[10] bg-background border border-border-strong rounded-full w-8 h-8 flex items-center justify-center cursor-pointer text-foreground text-sm transition-opacity duration-[var(--duration-base)] ease-[var(--ease-standard)]';
+  const overlayBase = cn(
+    'absolute inset-y-0 z-[10] w-16 flex items-center',
+    'transition-opacity duration-[var(--duration-base)] ease-[var(--ease-standard)]',
+    'cursor-pointer border-none bg-transparent p-0',
+  );
 
   return (
     <div className="relative">
@@ -48,9 +52,14 @@ export function Shelf({ children, gap = 16 }: ShelfProps) {
         type="button"
         onClick={() => scroll('left')}
         aria-label="Scroll left"
-        className={cn(arrowBase, 'left-0', canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none')}
+        className={cn(
+          overlayBase,
+          'left-0 justify-start',
+          'bg-gradient-to-r from-background to-transparent',
+          canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none',
+        )}
       >
-        ←
+        <ChevronLeft className="text-foreground w-5 h-5 ml-1" strokeWidth={1.5} />
       </button>
 
       <div
@@ -65,9 +74,14 @@ export function Shelf({ children, gap = 16 }: ShelfProps) {
         type="button"
         onClick={() => scroll('right')}
         aria-label="Scroll right"
-        className={cn(arrowBase, 'right-0', canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none')}
+        className={cn(
+          overlayBase,
+          'right-0 justify-end',
+          'bg-gradient-to-l from-background to-transparent',
+          canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none',
+        )}
       >
-        →
+        <ChevronRight className="text-foreground w-5 h-5 mr-1" strokeWidth={1.5} />
       </button>
     </div>
   );
