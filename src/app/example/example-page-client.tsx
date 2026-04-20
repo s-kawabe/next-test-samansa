@@ -7,7 +7,7 @@ import {
   GetVideoCommentsDocument,
   type GetVideoCommentsQuery,
 } from '@/lib/graphql/generated/graphql';
-import { useQuery } from '@apollo/client/react';
+import { useSuspenseQuery } from '@apollo/client/react';
 import {
   COMMENTS_PAGE_SIZE,
   EXAMPLE_CATEGORY_ID,
@@ -15,34 +15,23 @@ import {
   EXAMPLE_VIDEO_COMMENTS_ID,
 } from './example-constants';
 
-const FETCH_POLICY_CACHE_FIRST = 'cache-first' as const;
-
 export function ExamplePageClient() {
-  const { data: homeScreenData } = useQuery(GetHomeScreensDocument, {
-    fetchPolicy: FETCH_POLICY_CACHE_FIRST,
-  });
-  const { data: videoData } = useQuery(GetOriginalVideoDocument, {
+  const { data: homeScreenData } = useSuspenseQuery(GetHomeScreensDocument);
+  const { data: videoData } = useSuspenseQuery(GetOriginalVideoDocument, {
     variables: { id: EXAMPLE_ORIGINAL_VIDEO_ID },
-    fetchPolicy: FETCH_POLICY_CACHE_FIRST,
   });
-  const { data: videoCommentsData, fetchMore } = useQuery(
+  const { data: videoCommentsData, fetchMore } = useSuspenseQuery(
     GetVideoCommentsDocument,
     {
       variables: {
         id: EXAMPLE_VIDEO_COMMENTS_ID,
         first: COMMENTS_PAGE_SIZE,
       },
-      fetchPolicy: FETCH_POLICY_CACHE_FIRST,
     },
   );
-  const { data: categoryData } = useQuery(GetCategoryDocument, {
+  const { data: categoryData } = useSuspenseQuery(GetCategoryDocument, {
     variables: { id: EXAMPLE_CATEGORY_ID },
-    fetchPolicy: FETCH_POLICY_CACHE_FIRST,
   });
-
-  if (!homeScreenData || !videoData || !videoCommentsData || !categoryData) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="flex gap-4">
