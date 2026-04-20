@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, JetBrains_Mono, Zen_Kaku_Gothic_New } from 'next/font/google';
+import {
+  Space_Grotesk,
+  JetBrains_Mono,
+  Zen_Kaku_Gothic_New,
+} from 'next/font/google';
 import { Providers } from '@/providers';
 import { TopBar } from '@/components/features/navigation/TopBar';
 import { Footer } from '@/components/features/navigation/Footer';
@@ -23,10 +27,14 @@ const zenKakuGothicNew = Zen_Kaku_Gothic_New({
 });
 
 export const metadata: Metadata = {
-  title: 'samansa',
+  title: 'SAMANSA Test',
   description: '厳選された短編映画をカテゴリ別に楽しめる映画情報サービス',
   icons: {
     icon: '/favicon.ico',
+  },
+  robots: {
+    index: false,
+    follow: true,
   },
 };
 

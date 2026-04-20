@@ -75,11 +75,7 @@ export function CommentsDrawer({ videoId }: CommentsDrawerProps) {
   return (
     <Drawer
       title="Comments"
-      trigger={
-        <span className="inline-flex items-center py-3 px-4 border border-border-strong rounded-sm font-mono text-xs tracking-wider uppercase text-foreground-muted cursor-pointer">
-          Comments
-        </span>
-      }
+      trigger="Comments"
     >
       <CommentsDrawerContent videoId={videoId} />
     </Drawer>

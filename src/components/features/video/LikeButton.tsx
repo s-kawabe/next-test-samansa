@@ -1,8 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { Heart } from 'lucide-react';
 import { formatLikes } from '@/lib/format';
+import { cn } from '@/lib/cn';
 import { Button } from '@/components/ui/Button';
+
+const LIKE_BUTTON_LABEL_ICON_SIZE_PX = 20;
+const LIKE_BUTTON_LABEL_ICON_STROKE_WIDTH = 2;
 
 type LikeButtonProps = {
   videoId: string;
@@ -10,7 +15,10 @@ type LikeButtonProps = {
   initialCount: number;
 };
 
-export function LikeButton({ initialLiked = false, initialCount }: LikeButtonProps) {
+export function LikeButton({
+  initialLiked = false,
+  initialCount,
+}: LikeButtonProps) {
   const [liked, setLiked] = useState(initialLiked);
   const [count, setCount] = useState(initialCount);
 
@@ -25,12 +33,16 @@ export function LikeButton({ initialLiked = false, initialCount }: LikeButtonPro
       variant={liked ? 'primary' : 'secondary'}
       className="flex-col gap-1 py-3 px-5 rounded-sm"
     >
-      <span className="font-sans text-sm font-semibold">
-        {liked ? '♥ Liked' : '♡ Like this film'}
+      <span className="font-sans text-sm font-semibold inline-flex items-center gap-2">
+        <Heart
+          aria-hidden
+          size={LIKE_BUTTON_LABEL_ICON_SIZE_PX}
+          strokeWidth={LIKE_BUTTON_LABEL_ICON_STROKE_WIDTH}
+          className={cn('shrink-0', liked && 'fill-current')}
+        />
+        {liked ? 'Liked' : 'Like this film'}
       </span>
-      <span className="font-mono text-xs">
-        {formatLikes(count)} people
-      </span>
+      <span className="font-mono text-xs">{formatLikes(count)} people</span>
     </Button>
   );
 }
