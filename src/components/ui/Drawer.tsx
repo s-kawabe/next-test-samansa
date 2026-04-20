@@ -37,10 +37,12 @@ export function Drawer({
       />
       <BaseDrawer.Portal>
         <BaseDrawer.Backdrop className="fixed inset-0 bg-overlay z-[40]" />
-        <BaseDrawer.Popup className="fixed inset-y-0 right-0 w-[420px] max-w-full bg-background border-l border-border z-[50] overflow-y-auto">
-          <BaseDrawer.Title className="sr-only">{title}</BaseDrawer.Title>
-          {children}
-        </BaseDrawer.Popup>
+        <BaseDrawer.Viewport className="fixed inset-y-0 right-0 w-[420px] max-w-full z-[50]">
+          <BaseDrawer.Popup className="h-full bg-background border-l border-border overflow-y-auto">
+            <BaseDrawer.Title className="sr-only">{title}</BaseDrawer.Title>
+            {children}
+          </BaseDrawer.Popup>
+        </BaseDrawer.Viewport>
       </BaseDrawer.Portal>
     </BaseDrawer.Root>
   );
