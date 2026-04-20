@@ -23,7 +23,7 @@ export function VideoCard({ video, width = 280 }: VideoCardProps) {
   return (
     <Link
       href={`/videos/${video.id}`}
-      className="flex flex-col gap-3"
+      className="group flex flex-col gap-3 rounded-md p-3 bg-white/0 transition-colors duration-[var(--duration-base)] ease-[var(--ease-standard)] hover:bg-white/5"
       style={{ width }}
     >
       <div className="relative aspect-video overflow-hidden rounded-sm bg-background-muted">
@@ -33,7 +33,7 @@ export function VideoCard({ video, width = 280 }: VideoCardProps) {
             alt={video.title ?? ''}
             fill
             sizes="280px"
-            className="object-cover transition-transform duration-[var(--duration-slow)] ease-[var(--ease-standard)]"
+            className="object-cover transition-transform duration-[var(--duration-slow)] ease-[var(--ease-standard)] group-hover:scale-[1.03]"
           />
         )}
         <DurationBadge duration={video.duration} />

@@ -22,7 +22,7 @@ export function Breadcrumb({ items }: BreadcrumbProps) {
             ) : (
               <Link
                 href={item.href}
-                className="text-foreground-muted transition-colors duration-[var(--duration-fast)] hover:text-foreground"
+                className="text-foreground-muted transition-colors duration-[var(--duration-fast)] hover:text-foreground relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-[width] after:duration-[var(--duration-fast)] hover:after:w-full"
               >
                 {item.label}
               </Link>
