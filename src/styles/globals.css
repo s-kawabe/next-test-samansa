@@ -72,6 +72,11 @@
   --color-ring:    var(--color-neutral-50);
   --color-overlay: oklch(0 0 0 / 0.8);
 
+  /* On imagery (thumbnails, stills): independent of page light/dark — dark frosted pill + light type. */
+  --color-on-media-badge-bg: oklch(0 0 0 / 0.72);
+  --color-on-media-badge-ring: oklch(1 0 0 / 0.18);
+  --color-on-media-badge-foreground: var(--color-white);
+
   /* ---------- Typography ----------
      LINE Seed JP A for UI / body / headings. Manrope for labels, eyebrows,
      metadata, and accent UI elements. */
@@ -238,6 +243,10 @@
   --color-foreground-subtle: var(--color-foreground-subtle);
   --color-foreground-inverse: var(--color-foreground-inverse);
 
+  --color-on-media-badge-bg: var(--color-on-media-badge-bg);
+  --color-on-media-badge-ring: var(--color-on-media-badge-ring);
+  --color-on-media-badge-foreground: var(--color-on-media-badge-foreground);
+
   --color-border: var(--color-border);
   --color-border-strong: var(--color-border-strong);
   --color-border-muted: var(--color-border-muted);
@@ -395,31 +404,6 @@ a {
   border-radius: var(--radius-xs);
 }
 
-/* =========================================================================
-   Drawer animations (base-ui @base-ui/react)
-   ========================================================================= */
-[data-base-ui-drawer-popup] {
-  transform: translateX(100%);
-  transition: transform var(--duration-slow) var(--ease-standard);
-}
-[data-base-ui-drawer-popup][data-open] {
-  transform: none;
-}
-[data-base-ui-drawer-popup][data-starting-style],
-[data-base-ui-drawer-popup][data-ending-style] {
-  transform: translateX(100%);
-}
-[data-base-ui-drawer-backdrop] {
-  opacity: 0;
-  transition: opacity var(--duration-slow) var(--ease-standard);
-}
-[data-base-ui-drawer-backdrop][data-open] {
-  opacity: 1;
-}
-[data-base-ui-drawer-backdrop][data-starting-style],
-[data-base-ui-drawer-backdrop][data-ending-style] {
-  opacity: 0;
-}
 
 /* Reduced motion — honor user preference. */
 @media (prefers-reduced-motion: reduce) {

@@ -27,7 +27,7 @@ export function Drawer({
             size="sm"
             type="button"
             className={cn(
-              'py-3 px-4 font-label text-xs tracking-wider uppercase',
+              'py-3 px-4 font-label text-xs tracking-wider',
               triggerClassName,
             )}
           >
@@ -36,8 +36,8 @@ export function Drawer({
         }
       />
       <BaseDrawer.Portal>
-        <BaseDrawer.Backdrop className="fixed inset-0 bg-overlay z-[40]" />
-        <BaseDrawer.Viewport className="fixed inset-y-0 right-0 w-[420px] max-w-full z-[50]">
+        <BaseDrawer.Backdrop className="fixed inset-0 bg-overlay z-[40] opacity-0 transition-opacity duration-[var(--duration-slow)] ease-[var(--ease-standard)] data-[open]:opacity-100 data-[starting-style]:opacity-0 data-[ending-style]:opacity-0" />
+        <BaseDrawer.Viewport className="fixed inset-y-0 right-0 w-[420px] max-w-full z-[50] translate-x-full transition-transform duration-[var(--duration-slow)] ease-[var(--ease-standard)] data-[open]:translate-x-0 data-[starting-style]:translate-x-full data-[ending-style]:translate-x-full">
           <BaseDrawer.Popup className="h-full bg-background border-l border-border overflow-y-auto">
             <BaseDrawer.Title className="sr-only">{title}</BaseDrawer.Title>
             {children}
