@@ -41,24 +41,9 @@ function CommentsDrawerContent({ videoId }: CommentsDrawerProps) {
   };
 
   return (
-    <div style={{ padding: 'var(--spacing-6)', display: 'flex', flexDirection: 'column' }}>
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          marginBottom: 'var(--spacing-4)',
-        }}
-      >
-        <span
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--text-xs)',
-            letterSpacing: 'var(--tracking-wider)',
-            textTransform: 'uppercase',
-            color: 'var(--color-foreground-subtle)',
-          }}
-        >
+    <div className="p-6 flex flex-col">
+      <div className="flex justify-between items-center mb-4">
+        <span className="font-mono text-xs tracking-wider uppercase text-foreground-subtle">
           COMMENTS · {allCount}
         </span>
       </div>
@@ -75,19 +60,7 @@ function CommentsDrawerContent({ videoId }: CommentsDrawerProps) {
         <button
           type="button"
           onClick={loadMore}
-          style={{
-            marginTop: 'var(--spacing-4)',
-            padding: 'var(--spacing-3) var(--spacing-4)',
-            border: '1px solid var(--color-border)',
-            borderRadius: 'var(--radius-sm)',
-            background: 'transparent',
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--text-xs)',
-            color: 'var(--color-foreground-muted)',
-            cursor: 'pointer',
-            letterSpacing: 'var(--tracking-wider)',
-            textTransform: 'uppercase',
-          }}
+          className="mt-4 py-3 px-4 border border-border rounded-sm bg-transparent font-mono text-xs text-foreground-muted cursor-pointer tracking-wider uppercase"
         >
           Load more ({remaining} remaining)
         </button>
@@ -101,21 +74,7 @@ export function CommentsDrawer({ videoId }: CommentsDrawerProps) {
     <Drawer
       title="Comments"
       trigger={
-        <span
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            padding: 'var(--spacing-3) var(--spacing-4)',
-            border: '1px solid var(--color-border-strong)',
-            borderRadius: 'var(--radius-sm)',
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--text-xs)',
-            letterSpacing: 'var(--tracking-wider)',
-            textTransform: 'uppercase',
-            color: 'var(--color-foreground-muted)',
-            cursor: 'pointer',
-          }}
-        >
+        <span className="inline-flex items-center py-3 px-4 border border-border-strong rounded-sm font-mono text-xs tracking-wider uppercase text-foreground-muted cursor-pointer">
           Comments
         </span>
       }

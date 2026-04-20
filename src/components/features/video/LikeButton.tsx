@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { formatLikes } from '@/lib/format';
+import { cn } from '@/lib/cn';
 
 type LikeButtonProps = {
   videoId: string;
@@ -22,24 +23,18 @@ export function LikeButton({ initialLiked = false, initialCount }: LikeButtonPro
     <button
       type="button"
       onClick={toggle}
-      style={{
-        display: 'inline-flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: 'var(--spacing-1)',
-        padding: 'var(--spacing-3) var(--spacing-5)',
-        borderRadius: 'var(--radius-sm)',
-        border: `1px solid ${liked ? 'var(--color-primary)' : 'var(--color-border-strong)'}`,
-        background: liked ? 'var(--color-primary)' : 'transparent',
-        color: liked ? 'var(--color-primary-foreground)' : 'var(--color-foreground-muted)',
-        cursor: 'pointer',
-        transition: `background var(--duration-fast) var(--ease-standard), border-color var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard)`,
-      }}
+      className={cn(
+        'inline-flex flex-col items-center gap-1 py-3 px-5 rounded-sm cursor-pointer border',
+        'transition-[background-color,border-color,color] duration-[var(--duration-fast)] ease-[var(--ease-standard)]',
+        liked
+          ? 'bg-primary border-primary text-primary-foreground'
+          : 'bg-transparent border-border-strong text-foreground-muted hover:border-foreground hover:text-foreground',
+      )}
     >
-      <span style={{ fontFamily: 'var(--font-sans)', fontSize: 'var(--text-sm)', fontWeight: 600 }}>
+      <span className="font-sans text-sm font-semibold">
         {liked ? '♥ Liked' : '♡ Like this film'}
       </span>
-      <span style={{ fontFamily: 'var(--font-mono)', fontSize: 'var(--text-xs)' }}>
+      <span className="font-mono text-xs">
         {formatLikes(count)} people
       </span>
     </button>

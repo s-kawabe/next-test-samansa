@@ -30,55 +30,18 @@ export function CategoryShelf({
   videos,
 }: CategoryShelfProps) {
   return (
-    <section
-      style={{
-        paddingBottom: 'var(--spacing-16)',
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'baseline',
-          gap: 'var(--spacing-4)',
-          marginBottom: 'var(--spacing-6)',
-          flexWrap: 'wrap',
-        }}
-      >
+    <section className="pb-16">
+      <div className="flex items-baseline gap-4 mb-6 flex-wrap">
         <Eyebrow tone="subtle">{indexOfTotal(index, total)}</Eyebrow>
-        <h2
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'var(--text-3xl)',
-            fontWeight: 700,
-            letterSpacing: 'var(--tracking-tight)',
-            lineHeight: 'var(--leading-tight)',
-            color: 'var(--color-foreground)',
-          }}
-        >
+        <h2 className="font-display text-3xl font-bold tracking-tight leading-tight text-foreground">
           {categoryName}
         </h2>
         {tagline && (
-          <p
-            style={{
-              fontFamily: 'var(--font-sans)',
-              fontSize: 'var(--text-sm)',
-              color: 'var(--color-foreground-muted)',
-              marginLeft: 'auto',
-            }}
-          >
-            {tagline}
-          </p>
+          <p className="font-sans text-sm text-foreground-muted ml-auto">{tagline}</p>
         )}
         <Link
           href={`/categories/${categoryId}`}
-          style={{
-            fontFamily: 'var(--font-mono)',
-            fontSize: 'var(--text-xs)',
-            letterSpacing: 'var(--tracking-wider)',
-            textTransform: 'uppercase',
-            color: 'var(--color-foreground-subtle)',
-            transition: `color var(--duration-fast)`,
-          }}
+          className="font-mono text-xs tracking-wider uppercase text-foreground-subtle transition-colors duration-[var(--duration-fast)] hover:text-foreground"
         >
           View all →
         </Link>
@@ -86,10 +49,7 @@ export function CategoryShelf({
 
       <Shelf gap={16}>
         {videos.map((video) => (
-          <div
-            key={video.id}
-            style={{ scrollSnapAlign: 'start', flexShrink: 0 }}
-          >
+          <div key={video.id} className="snap-start shrink-0">
             <VideoCard video={video} width={280} />
           </div>
         ))}
