@@ -17,12 +17,14 @@
     "@apollo/client": "^4.1.7",
     "@apollo/client-integration-nextjs": "^0.14.5",
     "@base-ui/react": "^1.4.1",
+    "class-variance-authority": "^0.7.1",
     "dayjs": "^1.11.20",
     "graphql": "^16.13.2",
     "next": "16.2.4",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "rxjs": "^7.8.2"
+    "rxjs": "^7.8.2",
+    "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^6.3.0",

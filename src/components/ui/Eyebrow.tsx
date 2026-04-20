@@ -1,27 +1,26 @@
-type EyebrowProps = {
-  tone?: 'subtle' | 'muted' | 'foreground';
-  children: React.ReactNode;
-};
+import { cva, type VariantProps } from 'class-variance-authority';
+import type { HTMLAttributes } from 'react';
+import { cn } from '@/lib/cn';
 
-const toneColor: Record<NonNullable<EyebrowProps['tone']>, string> = {
-  subtle: 'var(--color-foreground-subtle)',
-  muted: 'var(--color-foreground-muted)',
-  foreground: 'var(--color-foreground)',
-};
+const eyebrowVariants = cva(
+  'font-mono text-xs font-medium tracking-wider uppercase',
+  {
+    variants: {
+      tone: {
+        subtle: 'text-foreground-subtle',
+        muted: 'text-foreground-muted',
+        foreground: 'text-foreground',
+      },
+    },
+    defaultVariants: {
+      tone: 'subtle',
+    },
+  },
+);
 
-export function Eyebrow({ tone = 'subtle', children }: EyebrowProps) {
-  return (
-    <span
-      style={{
-        color: toneColor[tone],
-        fontFamily: 'var(--font-mono)',
-        fontSize: 'var(--text-xs)',
-        fontWeight: 500,
-        letterSpacing: 'var(--tracking-wider)',
-        textTransform: 'uppercase',
-      }}
-    >
-      {children}
-    </span>
-  );
+type EyebrowProps = HTMLAttributes<HTMLSpanElement> &
+  VariantProps<typeof eyebrowVariants>;
+
+export function Eyebrow({ tone, className, ...props }: EyebrowProps) {
+  return <span className={cn(eyebrowVariants({ tone }), className)} {...props} />;
 }
