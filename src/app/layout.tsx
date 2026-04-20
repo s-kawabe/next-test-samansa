@@ -1,17 +1,23 @@
 import type { Metadata } from 'next';
-import { Geist_Mono, Playfair_Display } from 'next/font/google';
+import { Space_Grotesk, JetBrains_Mono, Zen_Kaku_Gothic_New } from 'next/font/google';
 import { Providers } from '@/providers';
 import '@/styles/globals.css';
 
-const playfairDisplay = Playfair_Display({
-  variable: '--font-display',
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space-grotesk',
   subsets: ['latin'],
-  weight: ['400', '700', '900'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-mono',
+const jetbrainsMono = JetBrains_Mono({
+  variable: '--font-jetbrains-mono',
   subsets: ['latin'],
+});
+
+const zenKakuGothicNew = Zen_Kaku_Gothic_New({
+  variable: '--font-zen-kaku',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700', '900'],
 });
 
 export const metadata: Metadata = {
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${playfairDisplay.variable} ${geistMono.variable}`}
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} ${zenKakuGothicNew.variable}`}
     >
       <body>
         <Providers>{children}</Providers>
