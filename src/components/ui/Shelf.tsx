@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/cn';
 
 type ShelfProps = {
   children: React.ReactNode;
@@ -38,50 +39,24 @@ export function Shelf({ children, gap = 16 }: ShelfProps) {
     el.scrollBy({ left: dir === 'right' ? 320 : -320, behavior: 'smooth' });
   };
 
-  const arrowBase: React.CSSProperties = {
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    zIndex: 10,
-    transition: `opacity var(--duration-base) var(--ease-standard)`,
-    background: 'var(--color-background)',
-    border: '1px solid var(--color-border-strong)',
-    borderRadius: 'var(--radius-full)',
-    width: 32,
-    height: 32,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    cursor: 'pointer',
-    color: 'var(--color-foreground)',
-    fontSize: 14,
-  };
+  const arrowBase =
+    'absolute top-1/2 -translate-y-1/2 z-[10] bg-background border border-border-strong rounded-full w-8 h-8 flex items-center justify-center cursor-pointer text-foreground text-sm transition-opacity duration-[var(--duration-base)] ease-[var(--ease-standard)]';
 
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="relative">
       <button
         type="button"
         onClick={() => scroll('left')}
         aria-label="Scroll left"
-        style={{
-          ...arrowBase,
-          left: 0,
-          opacity: canScrollLeft ? 1 : 0,
-          pointerEvents: canScrollLeft ? 'auto' : 'none',
-        }}
+        className={cn(arrowBase, 'left-0', canScrollLeft ? 'opacity-100' : 'opacity-0 pointer-events-none')}
       >
         ←
       </button>
 
       <div
         ref={scrollRef}
-        className="no-scrollbar"
-        style={{
-          display: 'flex',
-          gap,
-          overflowX: 'auto',
-          scrollSnapType: 'x mandatory',
-        }}
+        className="no-scrollbar flex overflow-x-auto snap-x snap-mandatory"
+        style={{ gap }}
       >
         {children}
       </div>
@@ -90,12 +65,7 @@ export function Shelf({ children, gap = 16 }: ShelfProps) {
         type="button"
         onClick={() => scroll('right')}
         aria-label="Scroll right"
-        style={{
-          ...arrowBase,
-          right: 0,
-          opacity: canScrollRight ? 1 : 0,
-          pointerEvents: canScrollRight ? 'auto' : 'none',
-        }}
+        className={cn(arrowBase, 'right-0', canScrollRight ? 'opacity-100' : 'opacity-0 pointer-events-none')}
       >
         →
       </button>
