@@ -45,7 +45,7 @@ function CommentsDrawerContent({ videoId }: CommentsDrawerProps) {
     <div className="p-6 flex flex-col">
       <div className="flex justify-between items-center mb-4">
         <span className="font-label text-xs tracking-wider uppercase text-foreground-subtle">
-          COMMENTS · {allCount}
+          Comments · {allCount}
         </span>
       </div>
 
@@ -73,10 +73,7 @@ function CommentsDrawerContent({ videoId }: CommentsDrawerProps) {
 
 export function CommentsDrawer({ videoId }: CommentsDrawerProps) {
   return (
-    <Drawer
-      title="Comments"
-      trigger="Comments"
-    >
+    <Drawer title="Comments" trigger="Comments">
       <CommentsDrawerContent videoId={videoId} />
     </Drawer>
   );
