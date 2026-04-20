@@ -117,6 +117,7 @@ src/
     3. `@apollo/client-integration-nextjs` がキャッシュをストリームでクライアントへ転送
     4. CC の `useQuery`（`fetchPolicy: 'cache-first'`）がキャッシュにヒット → ネットワーク再取得なし
   - `PreloadQuery` は使用しない（SC で直接 query を叩く方針）
+  - 複数クエリは `Promise.all` ではなく `await` を順次実行する（並列実行すると Apollo キャッシュが壊れる）
 
 ---
 
