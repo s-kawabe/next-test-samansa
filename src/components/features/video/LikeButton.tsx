@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { formatLikes } from '@/lib/format';
-import { cn } from '@/lib/cn';
+import { Button } from '@/components/ui/Button';
 
 type LikeButtonProps = {
   videoId: string;
@@ -20,16 +20,10 @@ export function LikeButton({ initialLiked = false, initialCount }: LikeButtonPro
   };
 
   return (
-    <button
-      type="button"
+    <Button
       onClick={toggle}
-      className={cn(
-        'inline-flex flex-col items-center gap-1 py-3 px-5 rounded-sm cursor-pointer border',
-        'transition-[background-color,border-color,color] duration-[var(--duration-fast)] ease-[var(--ease-standard)]',
-        liked
-          ? 'bg-primary border-primary text-primary-foreground'
-          : 'bg-transparent border-border-strong text-foreground-muted hover:border-foreground hover:text-foreground',
-      )}
+      variant={liked ? 'primary' : 'secondary'}
+      className="flex-col gap-1 py-3 px-5 rounded-sm"
     >
       <span className="font-sans text-sm font-semibold">
         {liked ? '♥ Liked' : '♡ Like this film'}
@@ -37,6 +31,6 @@ export function LikeButton({ initialLiked = false, initialCount }: LikeButtonPro
       <span className="font-mono text-xs">
         {formatLikes(count)} people
       </span>
-    </button>
+    </Button>
   );
 }

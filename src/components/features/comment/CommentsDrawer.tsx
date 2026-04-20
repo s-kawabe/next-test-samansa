@@ -5,6 +5,7 @@ import {
   GetVideoCommentsDocument,
   type GetVideoCommentsQuery,
 } from '@/lib/graphql/generated/graphql';
+import { Button } from '@/components/ui/Button';
 import { Drawer } from '@/components/ui/Drawer';
 import { CommentItem } from './CommentItem';
 
@@ -57,13 +58,14 @@ function CommentsDrawerContent({ videoId }: CommentsDrawerProps) {
       </div>
 
       {hasNextPage && (
-        <button
-          type="button"
+        <Button
           onClick={loadMore}
-          className="mt-4 py-3 px-4 border border-border rounded-sm bg-transparent font-mono text-xs text-foreground-muted cursor-pointer tracking-wider uppercase"
+          variant="ghost"
+          size="sm"
+          className="mt-4 py-3 px-4 font-mono text-xs tracking-wider uppercase border-border"
         >
           Load more ({remaining} remaining)
-        </button>
+        </Button>
       )}
     </div>
   );
