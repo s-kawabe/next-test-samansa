@@ -3,7 +3,7 @@ import type { HTMLAttributes } from 'react';
 import { cn } from '@/lib/cn';
 
 const eyebrowVariants = cva(
-  'font-mono text-xs font-medium tracking-wider uppercase',
+  'font-label text-xs font-medium tracking-wider uppercase',
   {
     variants: {
       tone: {

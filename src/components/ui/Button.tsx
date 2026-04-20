@@ -8,7 +8,9 @@ import { cn } from '@/lib/cn';
 const buttonVariants = cva(
   [
     'inline-flex items-center justify-center font-medium cursor-pointer',
-    'transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)]',
+    'transition-[color,background-color,border-color,transform,box-shadow] duration-[var(--duration-fast)] ease-[var(--ease-standard)]',
+    'shadow-none hover:-translate-y-px active:translate-y-0 active:scale-95',
+    'data-disabled:hover:-translate-y-0 data-disabled:active:scale-100 data-disabled:shadow-none',
     'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring',
     'data-disabled:opacity-50 data-disabled:cursor-not-allowed',
   ],
@@ -16,9 +18,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-primary text-primary-foreground border border-transparent hover:bg-primary-hover',
+          'bg-primary text-primary-foreground border border-transparent hover:bg-primary-hover hover:shadow-md',
         secondary:
-          'bg-transparent text-foreground-muted border border-border-strong hover:border-foreground hover:text-foreground',
+          'bg-transparent text-foreground-muted border border-border-strong hover:border-foreground hover:text-foreground hover:shadow-sm',
         ghost:
           'bg-transparent text-foreground-muted border border-transparent hover:bg-background-subtle hover:text-foreground',
       },

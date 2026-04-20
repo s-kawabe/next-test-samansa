@@ -33,7 +33,7 @@ export function CategoryShelf({
     <section className="pb-16">
       <div className="flex items-baseline gap-4 mb-6 flex-wrap">
         <Eyebrow tone="subtle">{indexOfTotal(index, total)}</Eyebrow>
-        <h2 className="font-display text-3xl font-bold tracking-tight leading-tight text-foreground">
+        <h2 className="font-sans text-3xl font-bold tracking-tight leading-tight text-foreground">
           {categoryName}
         </h2>
         {tagline && (
@@ -41,7 +41,7 @@ export function CategoryShelf({
         )}
         <Link
           href={`/categories/${categoryId}`}
-          className="font-mono text-xs tracking-wider uppercase text-foreground-subtle transition-colors duration-[var(--duration-fast)] hover:text-foreground"
+          className="font-label text-xs tracking-wider uppercase text-foreground-subtle transition-colors duration-[var(--duration-fast)] hover:text-foreground"
         >
           View all →
         </Link>
