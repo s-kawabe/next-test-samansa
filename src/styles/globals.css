@@ -192,58 +192,6 @@
   --z-toast:   60;
 }
 
-/* =========================================================================
-   Dark mode — data-theme attribute controlled (+ system fallback).
-   ========================================================================= */
-html[data-theme='dark'] {
-  --color-background:        var(--color-neutral-950);
-  --color-background-subtle: var(--color-neutral-900);
-  --color-background-muted:  var(--color-neutral-800);
-  --color-background-inverse: var(--color-white);
-
-  --color-foreground:         var(--color-neutral-50);
-  --color-foreground-muted:   var(--color-neutral-400);
-  --color-foreground-subtle:  var(--color-neutral-500);
-  --color-foreground-inverse: var(--color-neutral-950);
-
-  --color-border:        var(--color-neutral-800);
-  --color-border-strong: var(--color-neutral-700);
-  --color-border-muted:  var(--color-neutral-900);
-
-  --color-primary:            var(--color-primary-500);
-  --color-primary-hover:      var(--color-primary-400);
-  --color-primary-foreground: var(--color-white);
-
-  --color-accent:             var(--color-white);
-  --color-accent-foreground:  var(--color-neutral-950);
-
-  --color-ring: var(--color-white);
-}
-
-html[data-theme='light'] {
-  --color-background:        var(--color-white);
-  --color-background-subtle: var(--color-neutral-50);
-  --color-background-muted:  var(--color-neutral-100);
-  --color-background-inverse: var(--color-neutral-950);
-
-  --color-foreground:         var(--color-neutral-950);
-  --color-foreground-muted:   var(--color-neutral-600);
-  --color-foreground-subtle:  var(--color-neutral-500);
-  --color-foreground-inverse: var(--color-white);
-
-  --color-border:        var(--color-neutral-200);
-  --color-border-strong: var(--color-neutral-300);
-  --color-border-muted:  var(--color-neutral-100);
-
-  --color-primary:            var(--color-primary-600);
-  --color-primary-hover:      var(--color-primary-700);
-  --color-primary-foreground: var(--color-white);
-
-  --color-accent:             var(--color-neutral-950);
-  --color-accent-foreground:  var(--color-white);
-
-  --color-ring: var(--color-neutral-950);
-}
 
 /* =========================================================================
    Tailwind theme bridge — exposes tokens as utilities (bg-background,

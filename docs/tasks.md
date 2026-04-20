@@ -29,7 +29,6 @@ src/
       DurationBadge.tsx             # Server Component
       Eyebrow.tsx                   # Server Component
       Shelf.tsx                     # Client Component（スクロール制御）
-      ThemeToggle.tsx               # Client Component（localStorage）
     features/
       video/
         VideoCard.tsx               # Server Component
@@ -62,25 +61,23 @@ src/
 
 ## Phase 1: 基盤セットアップ
 
-### T-01: グローバルCSS・テーマシステムの構築
+### T-01: グローバルCSS・デザイントークンの構築
 ファイル: `src/styles/globals.css`
 
-- CSS変数でダーク/ライトテーマを定義
-  - `html[data-theme='dark']` (デフォルト) / `html[data-theme='light']`
+- CSS変数でライトテーマのデザイントークンを定義（ダークテーマ対応は行わない）
   - `--color-background`, `--color-background-muted`, `--color-foreground`, `--color-foreground-muted`, `--color-foreground-subtle`
   - `--color-border`, `--color-border-strong`, `--color-primary`, `--color-primary-foreground`
 - ユーティリティ: `.container-max`（max-width: 1440px, padding-inline: clamp(24px, 5vw, 64px)）
 - ユーティリティ: `.no-scrollbar`
 - ラジウス変数: `--radius-sm: 2px`, `--radius-md: 4px`
 - `a { color: inherit; text-decoration: none; }` のリセット
-- `html, body` にテーマ変数を適用
+- `html, body` にデザイントークンを適用
 
 ### T-02: フォント・レイアウト設定の更新
 ファイル: `src/app/layout.tsx`
 
 - フォント設定: display用（例: Playfair Display）・mono用（Geist Mono）を CSS変数に割り当て
   - `--font-display`, `--font-mono` の定義
-- `html` に `data-theme="dark"` をデフォルト設定
 - メタデータを更新（title: `"samansa"`, description: サービス説明）
 - `.font-display { font-family: var(--font-display), ... }` クラスを globals.css に追加
 
@@ -148,14 +145,6 @@ src/
 - スクロール状態に応じて左右の矢印ボタンを表示/非表示（`opacity` トランジション）
 - `useRef` + `addEventListener('scroll')` で制御
 - `children` を受け取る汎用コンテナ
-
-### T-11: ThemeToggle コンポーネント
-ファイル: `src/components/ui/ThemeToggle.tsx` — **Client Component** (`'use client'`)
-
-- ダーク/ライトテーマ切り替えボタン
-- `localStorage['samansa-theme']` で永続化
-- `document.documentElement.dataset.theme` を切り替え
-- 初期値は `localStorage` の値、なければ `'dark'`
 
 ---
 
@@ -235,7 +224,7 @@ src/
 - backdrop-filter blur + 半透明背景
 - 左: ブランドロゴ（"S" マーク + "samansa" テキスト）、`/` へのリンク
 - 中: ナビゲーション（Home / Categories / Search）
-- 右: `ThemeToggle`（Client Component として配置）+ ユーザーアバター
+- 右: ユーザーアバター
 
 ### T-21: Footer コンポーネント
 ファイル: `src/layout/Footer.tsx` — **Server Component**
@@ -250,7 +239,9 @@ src/
 ファイル: `src/app/page.tsx`、`src/app/loading.tsx`
 
 **page.tsx（RSC）**
-- `getHomeScreens` で全カテゴリ＋映画一覧を取得
+- `getHomeScreens` でカテゴリ＋映画一覧を一括取得（カテゴリと動画を分割取得しない）
+  - API の `homeScreens` はカテゴリとエディターがキュレーションした動画リストが一体で返る設計のため、分割不可
+  - パフォーマンスは `revalidate` による ISR でカバーする
 - Hero セクション: キャッチコピー・カテゴリ数表示
 - カテゴリごとに `CategoryShelf` を並べる
 - `export const revalidate = 60`

@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" data-theme="dark" className={`${playfairDisplay.variable} ${geistMono.variable}`}>
+    <html lang="ja" className={`${playfairDisplay.variable} ${geistMono.variable}`}>
       <body>
         <Providers>{children}</Providers>
       </body>
