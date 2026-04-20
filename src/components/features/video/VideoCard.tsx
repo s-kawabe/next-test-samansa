@@ -23,7 +23,7 @@ export function VideoCard({ video, width = 280 }: VideoCardProps) {
   return (
     <Link
       href={`/videos/${video.id}`}
-      className="flex flex-col gap-3"
+      className="flex flex-col gap-3 rounded-sm p-2 -m-2 transition-colors duration-[var(--duration-fast)] ease-[var(--ease-standard)] hover:bg-white/5"
       style={{ width }}
     >
       <div className="relative aspect-video overflow-hidden rounded-sm bg-background-muted">
