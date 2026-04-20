@@ -27,7 +27,7 @@ export function Drawer({
             size="sm"
             type="button"
             className={cn(
-              'py-3 px-4 font-mono text-xs tracking-wider uppercase',
+              'py-3 px-4 font-label text-xs tracking-wider uppercase',
               triggerClassName,
             )}
           >

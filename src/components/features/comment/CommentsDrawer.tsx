@@ -44,7 +44,7 @@ function CommentsDrawerContent({ videoId }: CommentsDrawerProps) {
   return (
     <div className="p-6 flex flex-col">
       <div className="flex justify-between items-center mb-4">
-        <span className="font-mono text-xs tracking-wider uppercase text-foreground-subtle">
+        <span className="font-label text-xs tracking-wider uppercase text-foreground-subtle">
           COMMENTS · {allCount}
         </span>
       </div>
@@ -62,7 +62,7 @@ function CommentsDrawerContent({ videoId }: CommentsDrawerProps) {
           onClick={loadMore}
           variant="ghost"
           size="sm"
-          className="mt-4 py-3 px-4 font-mono text-xs tracking-wider uppercase border-border"
+          className="mt-4 py-3 px-4 font-label text-xs tracking-wider uppercase border-border"
         >
           Load more ({remaining} remaining)
         </Button>

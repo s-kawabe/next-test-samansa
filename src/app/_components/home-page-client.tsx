@@ -11,10 +11,10 @@ export function HomePageClient() {
   return (
     <div>
       <section className="container-max pt-24 pb-16">
-        <h1 className="font-display text-7xl font-black tracking-tighter leading-tight text-foreground">
+        <h1 className="font-sans text-7xl font-black tracking-tighter leading-tight text-foreground">
           Curated cinema,<br />your way.
         </h1>
-        <p className="mt-4 font-mono text-xs tracking-wider uppercase text-foreground-subtle">
+        <p className="mt-4 font-label text-xs tracking-wider uppercase text-foreground-subtle">
           {homeScreens.length} CATEGORIES · CURATED SHORT CINEMA
         </p>
       </section>

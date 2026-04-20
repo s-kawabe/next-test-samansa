@@ -73,13 +73,12 @@
   --color-overlay: oklch(0 0 0 / 0.6);
 
   /* ---------- Typography ----------
-     Zen Kaku Gothic New for UI / body. JetBrains Mono for meta, counts,
-     timestamps. Space Grotesk for display / brand headlines. */
-  --font-sans: var(--font-zen-kaku), ui-sans-serif, system-ui, -apple-system,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, 'SF Mono', Menlo,
-    Consolas, monospace;
-  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+     LINE Seed JP A for UI / body / headings. Manrope for labels, eyebrows,
+     metadata, and accent UI elements. */
+  --font-sans: var(--font-line-seed-jp), 'Hiragino Sans', 'Hiragino Kaku Gothic ProN',
+    'Yu Gothic', 'Meiryo', ui-sans-serif, system-ui, sans-serif;
+  --font-label: var(--font-manrope), 'Inter', ui-sans-serif, system-ui,
+    -apple-system, 'Segoe UI', sans-serif;
 
   /* Type scale — generous steps, biased toward bold display sizes. */
   --text-xs:   0.75rem;     /*  12 */
@@ -196,7 +195,7 @@
 
 /* =========================================================================
    Tailwind theme bridge — exposes tokens as utilities (bg-background,
-   text-foreground-muted, font-display, rounded-md, shadow-sm, etc.)
+   text-foreground-muted, font-label, rounded-md, shadow-sm, etc.)
    ========================================================================= */
 @theme inline {
   /* Colors */
@@ -250,8 +249,7 @@
 
   /* Fonts */
   --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-  --font-display: var(--font-display);
+  --font-label: var(--font-label);
 
   /* Font sizes */
   --text-xs: var(--text-xs);
@@ -332,10 +330,9 @@ body {
   line-height: var(--leading-normal);
 }
 
-/* Display text — bold, tight, confident. */
-.font-display,
+/* Headings — bold, tight, confident. */
 h1, h2, h3 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   letter-spacing: var(--tracking-tight);
   line-height: var(--leading-tight);
 }

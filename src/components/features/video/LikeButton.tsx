@@ -42,7 +42,7 @@ export function LikeButton({
         />
         {liked ? 'Liked' : 'Like this film'}
       </span>
-      <span className="font-mono text-xs">{formatLikes(count)} people</span>
+      <span className="font-label text-xs">{formatLikes(count)} people</span>
     </Button>
   );
 }

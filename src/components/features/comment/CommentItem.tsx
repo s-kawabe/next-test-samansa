@@ -30,7 +30,7 @@ export function CommentItem({ comment, first = false }: CommentItemProps) {
       <div className="flex-1 flex flex-col gap-1">
         <div className="flex items-baseline gap-2">
           <span className="font-sans text-sm font-semibold text-foreground">{userName}</span>
-          <span className="font-mono text-xs text-foreground-subtle">
+          <span className="font-label text-xs text-foreground-subtle">
             {formatRelative(comment.createdAt)}
           </span>
         </div>

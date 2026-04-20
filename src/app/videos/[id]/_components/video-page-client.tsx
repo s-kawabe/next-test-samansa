@@ -48,18 +48,18 @@ export function VideoPageClient({ id }: Props) {
 
         <div className="grid grid-cols-[1fr_420px] gap-12 items-start">
           <div>
-            <h1 className="font-display text-5xl font-black tracking-tighter leading-tight text-foreground mb-4">
+            <h1 className="font-sans text-5xl font-black tracking-tighter leading-tight text-foreground mb-4">
               {video.title}
             </h1>
 
             <div className="flex gap-4 items-center mb-8">
               {duration && (
-                <span className="font-mono text-xs tracking-wider uppercase text-foreground-subtle">
+                <span className="font-label text-xs tracking-wider uppercase text-foreground-subtle">
                   {formatDurationFull(duration)}
                 </span>
               )}
               {category?.name && (
-                <span className="font-mono text-xs tracking-wider uppercase text-foreground-subtle">
+                <span className="font-label text-xs tracking-wider uppercase text-foreground-subtle">
                   {category.name}
                 </span>
               )}

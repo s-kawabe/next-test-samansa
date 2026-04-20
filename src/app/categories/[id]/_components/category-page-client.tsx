@@ -28,10 +28,10 @@ export function CategoryPageClient({ id }: Props) {
       </div>
 
       <div className="mb-12">
-        <h1 className="font-display text-6xl font-black tracking-tighter text-foreground leading-tight">
+        <h1 className="font-sans text-6xl font-black tracking-tighter text-foreground leading-tight">
           {category.name}
         </h1>
-        <p className="mt-3 font-mono text-xs tracking-wider uppercase text-foreground-subtle">
+        <p className="mt-3 font-label text-xs tracking-wider uppercase text-foreground-subtle">
           {videos.length} FILMS
         </p>
       </div>

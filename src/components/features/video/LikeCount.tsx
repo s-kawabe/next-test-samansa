@@ -14,7 +14,7 @@ export function LikeCount({ count, emphasized = false }: LikeCountProps) {
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 font-mono text-sm font-semibold tabular-nums tracking-wide',
+        'inline-flex items-center gap-1.5 font-label text-sm font-semibold tabular-nums tracking-wide',
         emphasized ? 'text-primary' : 'text-foreground-muted',
       )}
     >
